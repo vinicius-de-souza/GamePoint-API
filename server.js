@@ -85,6 +85,6 @@ mongoose
     });
     console.log("Succesfully connected to MongoDB");
   })
-  .catch((err) => {
+  .catch((error) => {
     console.log(error);
   });
