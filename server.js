@@ -1,74 +1,74 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Product = require("./models/productModel");
+const Game = require("./models/gameModel");
 const app = express();
 
 app.use(express.json());
 
 //ROUTES
 
-//Fetch all products
-app.get("/products", async (req, res) => {
+//Fetch all games
+app.get("/games", async (req, res) => {
   try {
-    const products = await Product.find({});
-    res.status(200).json(products);
+    const games = await Game.find({});
+    res.status(200).json(games);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-//Fetch single product
-app.get("/products/:id", async (req, res) => {
+//Fetch single game
+app.get("/games/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const product = await Product.findById(id);
-    res.status(200).json(product);
+    const game = await Game.findById(id);
+    res.status(200).json(game);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-//Add Product
-app.post("/products", async (req, res) => {
+//Add Game
+app.post("/games", async (req, res) => {
   try {
-    const product = await Product.create(req.body);
-    res.status(200).json(product);
+    const game = await Game.create(req.body);
+    res.status(200).json(game);
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ message: error.message });
   }
 });
 
-//Update Product
-app.put("/products/:id", async (req, res) => {
+//Update Game
+app.put("/games/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const product = await Product.findByIdAndUpdate(id, req.body);
+    const game = await Game.findByIdAndUpdate(id, req.body);
 
-    if (!product) {
+    if (!game) {
       return res
         .status(404)
-        .json({ message: `Cannot find any item with ${id}` });
+        .json({ message: `Cannot find any game with ${id}` });
     }
-    const updateProduct = await Product.findById(id);
+    const updategame = await Game.findById(id);
 
-    res.status(200).json(updateProduct);
+    res.status(200).json(updategame);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-//Delete Product
-app.delete("/products/:id", async (req, res) => {
+//Delete Game
+app.delete("/games/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const product = await Product.findByIdAndDelete(id);
-    if (!product) {
+    const game = await Game.findByIdAndDelete(id);
+    if (!game) {
       return res
         .status(404)
         .json({ message: `Cannot find any item with ${id}` });
     }
-    res.status(200).json(product);
+    res.status(200).json(game);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
