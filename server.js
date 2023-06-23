@@ -4,6 +4,7 @@ const Game = require("./models/gameModel");
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 //ROUTES
 

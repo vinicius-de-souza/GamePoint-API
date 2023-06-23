@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const gameSchema = mongoose.Schema({
+const gameSchema = mongoose.Schema(games, {
   name: {
     type: "string",
     required: [true, "Por favor, insira um nome"],
