@@ -1,2 +1,2 @@
 # gamepoint-crud
-CRUD desenvolvido em Node.js, MongoDB e Express para a aplicação de jogos GamePoint.
+CRUD desenvolvido em Node.js, Mongoose e Express para a aplicação de jogos GamePoint.
